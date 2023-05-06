@@ -4,13 +4,6 @@ import time
 import os
 from scipy.stats import norm
 
-if os.listdir('captures') > 0:
-    #remove all files in captures folder
-    files = ['captures/'+f for f in os.listdir('captures')]
-    for f in files:
-        os.remove(f)
-else:
-    os.mkdir('captures')
 if os.listdir('anomaly_scores') > 0:
     #remove all files in captures folder
     files = ['anomaly_scores/'+f for f in os.listdir('anomaly_scores')]
