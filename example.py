@@ -17,8 +17,8 @@ for temp_path in os.listdir('captures'):
 
     # KitNET params:
     maxAE = 10 #maximum size for any autoencoder in the ensemble layer
-    FMgrace = 500 #the number of instances taken to learn the feature mapping (the ensemble's architecture)
-    ADgrace = 500 #the number of instances used to train the anomaly detector (ensemble itself)
+    FMgrace = 1000 #the number of instances taken to learn the feature mapping (the ensemble's architecture)
+    ADgrace = 1000 #the number of instances used to train the anomaly detector (ensemble itself)
 
     # Build Kitsune
     K = Kitsune(path,packet_limit,maxAE,FMgrace,ADgrace)
