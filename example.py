@@ -2,7 +2,20 @@ from Kitsune import Kitsune
 import numpy as np
 import time
 import os
+from scipy.stats import norm
+
+if os.listdir('captures') > 0:
+    #remove all files in captures folder
+    files = ['captures/'+f for f in os.listdir('captures')]
+    for f in files:
+        os.remove(f)
+if os.listdir('anomaly_scores') > 0:
+    #remove all files in captures folder
+    files = ['anomaly_scores/'+f for f in os.listdir('anomaly_scores')]
+    for f in files:
+        os.remove(f)
 for path in os.listdir('captures'):
+    path = 'captures/'+path
     packet_limit = np.Inf #the number of packets to process
 
     # KitNET params:
@@ -30,10 +43,13 @@ for path in os.listdir('captures'):
     stop = time.time()
     print("Complete. Time elapsed: "+ str(stop - start))
 
+    score_path = 'anomaly_scores/'+path.rsplit('.',1)[0]+'.txt'
+    with open(score_path, 'w') as f:
+        for score in RMSEs:
+            f.write(str(score) + "\n")
 
     # Here we demonstrate how one can fit the RMSE scores to a log-normal distribution (useful for finding/setting a cutoff threshold \phi)
-    from scipy.stats import norm
-    benignSample = np.log(RMSEs[FMgrace+ADgrace+1:100000])
+    benignSample = np.log(RMSEs[FMgrace+ADgrace+1:100])
     logProbs = norm.logsf(np.log(RMSEs), np.mean(benignSample), np.std(benignSample))
 
     # plot the RMSE anomaly scores
