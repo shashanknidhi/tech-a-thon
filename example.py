@@ -11,8 +11,8 @@ try:
             os.remove(f)
 except:
     os.mkdir('anomaly_scores')
-for path in os.listdir('captures'):
-    path = 'captures/'+path
+for temp_path in os.listdir('captures'):
+    path = 'captures/'+temp_path
     packet_limit = np.Inf #the number of packets to process
 
     # KitNET params:
@@ -40,7 +40,7 @@ for path in os.listdir('captures'):
     stop = time.time()
     print("Complete. Time elapsed: "+ str(stop - start))
 
-    score_path = 'anomaly_scores/'+path.rsplit('.',1)[0]+'.txt'
+    score_path = 'anomaly_scores/'+temp_path.rsplit('.',1)[0]+'.txt'
     with open(score_path, 'w') as f:
         for score in RMSEs:
             f.write(str(score) + "\n")
