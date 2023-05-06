@@ -2,13 +2,13 @@ import pyshark
 import datetime
 import os
 # Capture packets for every 30 seconds and save to a file
-try:
+if os.path.exists('captures'):
     if os.listdir('captures') > 0:
         #remove all files in captures folder
         files = ['captures/'+f for f in os.listdir('captures')]
         for f in files:
             os.remove(f)
-except:
+else:
     os.mkdir('captures')
 try:
     i = 0
