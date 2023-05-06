@@ -46,7 +46,7 @@ for temp_path in os.listdir('captures'):
             f.write(str(score) + "\n")
 
     # Here we demonstrate how one can fit the RMSE scores to a log-normal distribution (useful for finding/setting a cutoff threshold \phi)
-    benignSample = np.log(RMSEs[FMgrace+ADgrace+1:100])
+    benignSample = np.log(RMSEs[FMgrace+ADgrace+1:10000])
     logProbs = norm.logsf(np.log(RMSEs), np.mean(benignSample), np.std(benignSample))
 
     # plot the RMSE anomaly scores
