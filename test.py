@@ -5,6 +5,10 @@
 # file = "captures/a1.pcapng"
 # output = open(file,"x")
 # print(output)
-for i in range(1,5):
-    file = "captures/"+str(i)+".pcapng"
-    output = open(file, "x")
+# for i in range(1,5):
+#     file = "captures/"+str(i)+".pcapng"
+#     output = open(file, "x")
+import os
+print(os.listdir("D:/tech-a-thon/tech-a-thon/anomaly_scores"))
+os.remove("D:/tech-a-thon/tech-a-thon/anomaly_scores/"+os.listdir("D:/tech-a-thon/tech-a-thon/anomaly_scores")[-1])
+print(os.listdir("D:/tech-a-thon/tech-a-thon/anomaly_scores"))
