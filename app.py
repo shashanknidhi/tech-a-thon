@@ -5,8 +5,8 @@ st.write(""" # Dashboard
 Displays Threats 
 """)
 
-
 csv_folder = 'output_csv/'
+
 def block_ip(i):
     df = pd.read_csv(csv_folder+str(i)+'.csv')
     df.to_csv('blocked.csv',mode='a',header=False)
