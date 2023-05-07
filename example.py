@@ -11,6 +11,9 @@ if os.path.exists('anomaly_scores'):
             os.remove(f)
 else:
     os.mkdir('anomaly_scores')
+for path in os.listdir('captures'):
+    if path[-4:] == '.tsv':
+        os.remove('captures/'+path)
 for temp_path in os.listdir('captures'):
     path = 'captures/'+temp_path
     packet_limit = np.Inf #the number of packets to process
@@ -59,6 +62,6 @@ for temp_path in os.listdir('captures'):
     plt.title("Anomaly Scores from Kitsune's Execution Phase")
     plt.ylabel("RMSE (log scaled)")
     plt.xlabel("Time elapsed [min]")
-    figbar=plt.colorbar()
+    figbar=plt.colorbar()       
     figbar.ax.set_ylabel('Log Probability\n ', rotation=270)
     plt.show()
