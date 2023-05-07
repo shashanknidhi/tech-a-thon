@@ -61,7 +61,7 @@ for temp_path in os.listdir('captures'):
     logProbs = norm.logsf(np.log(RMSEs), np.mean(benignSample), np.std(benignSample))
 
     # plot the RMSE anomaly scores
-    print("Plotting results")
+    # print("Plotting results")
     from matplotlib import pyplot as plt
     from matplotlib import cm
     plt.figure(figsize=(10,5))
@@ -70,6 +70,6 @@ for temp_path in os.listdir('captures'):
     plt.title("Anomaly Scores from Kitsune's Execution Phase")
     plt.ylabel("RMSE (log scaled)")
     plt.xlabel("Time elapsed [min]")
-    figbar=plt.colorbar()       
-    figbar.ax.set_ylabel('Log Probability\n ', rotation=270)
+    # figbar=plt.colorbar()       
+    # figbar.ax.set_ylabel('Log Probability\n ', rotation=270)
     plt.savefig('output/'+str(i)+'.png')

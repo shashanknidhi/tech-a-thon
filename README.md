@@ -4,7 +4,9 @@
 
 !python sniff_network.py
 
-Interrupt terminal with Ctrl + C after 3-4 mins
-
 !python example.py
+
+!python map_color_ip.py
+
+streamlit run app.py 
 

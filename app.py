@@ -8,8 +8,15 @@ Displays Threats
 csv_folder = 'output_csv/'
 
 def block_ip(i):
-    df = pd.read_csv(csv_folder+str(i)+'.csv')
-    df.to_csv('blocked.csv',mode='a',header=False)
+    df1 = pd.read_csv(csv_folder+str(i)+'.csv')
+    df1_list = df1['ip.src'].to_list()
+
+    df2 = pd.read_csv('blocked.csv')
+    df2_list = df2['ip.src'].to_list()
+
+    merger_list = df2_list + df1_list
+    blocked_df = pd.DataFrame(merger_list,columns=['ip.src'])
+    blocked_df.to_csv('blocked.csv')
 def display_images(images):
     # st.write(
     #     """
