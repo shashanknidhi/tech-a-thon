@@ -11,11 +11,11 @@ def create_plot(txtpath):
     with open(txtpath,'r') as file:
         scores = file.readlines()
     scores = [float(score) for score in scores]
-    print('scores',len(scores))
+    # print('scores',len(scores))
     benignSample = np.log(scores[FMgrace+ADgrace+1:10000])
     logProbs = norm.logsf(np.log(scores), np.mean(benignSample), np.std(benignSample))
     colors = logProbs[FMgrace+ADgrace+1:]
-    print('colors',len(colors))
+    # print('colors',len(colors))
     plt.figure(figsize=(10,5))
     fig = plt.scatter(range(FMgrace+ADgrace+1,len(scores)),scores[FMgrace+ADgrace+1:],s=0.6,c=colors,cmap='RdYlGn')
     plt.yscale("log")
@@ -33,14 +33,14 @@ def filter_fig(fig,colors):
             indexs.append(True)
         else:
             indexs.append(False)
-    print('indexs',len(indexs))
+    # print('indexs',len(indexs))
     return indexs
 
 def filter_packets(tsv_path,indexs):
     df = pd.read_csv(tsv_path,sep = '\t')
     df = df.iloc[FMgrace+ADgrace+1:]
-    print('df',len(df))
-    print('indexs',len(indexs))
+    # print('df',len(df))
+    # print('indexs',len(indexs))
     df = df[indexs]
     df.to_csv(tsv_path+'.csv')
     return df
