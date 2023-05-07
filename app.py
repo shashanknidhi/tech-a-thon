@@ -22,8 +22,6 @@ def create_plot(txtpath):
     plt.xlabel("Time elapsed [min]")
     figbar=plt.colorbar()       
     figbar.ax.set_ylabel('Log Probability\n ', rotation=270)
-    print(type(fig))
-    print(fig)
     return fig
 for path in os.listdir('anomaly_scores'):
     st.pyplot(create_plot('anomaly_scores'+path))

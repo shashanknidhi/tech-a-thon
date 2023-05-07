@@ -14,15 +14,15 @@
 # print(os.listdir("D:/tech-a-thon/tech-a-thon/anomaly_scores"))
 
 # import subprocess
-import sys
-import os
+# import sys
+# import os
 
-# # check if the script is running with administrative privileges
-if os.getuid():
-    # if not, re-run the script with elevated privileges
-    args = ['powershell', '-command', f'Start-Process "{sys.executable}" -ArgumentList "{sys.argv[0]}" -Verb runAs']
-    subprocess.run(args)
-    sys.exit()
+# # # check if the script is running with administrative privileges
+# if os.getuid():
+#     # if not, re-run the script with elevated privileges
+#     args = ['powershell', '-command', f'Start-Process "{sys.executable}" -ArgumentList "{sys.argv[0]}" -Verb runAs']
+#     subprocess.run(args)
+#     sys.exit()
 
 # # specify the IP addresses to block
 # malicious_ips = ['10.0.0.100']
@@ -46,8 +46,24 @@ if os.getuid():
 #     output = subprocess.check_output(command, shell=True)
 #     print(output.decode())
 
-import subprocess
+# import subprocess
 
-ip_address = '10.0.0.100'
+# ip_address = '10.0.0.100'
 
-subprocess.run(['netsh', 'advfirewall', 'firewall', 'add', 'rule', 'name=BlockIP', 'dir=in', 'action=block', f'remoteip={ip_address}'])
+# subprocess.run(['netsh', 'advfirewall', 'firewall', 'add', 'rule', 'name=BlockIP', 'dir=in', 'action=block', f'remoteip={ip_address}'])
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Generate some random data
+x = np.random.rand(50)
+y = np.random.rand(50)
+colors = np.random.rand(50)
+
+# Create a scatter plot
+fig = plt.scatter(x, y, s=50, c=colors, cmap='RdYlGn')
+
+# Get the colors assigned to each data point
+scatter_colors = fig.to_rgba(colors)
+
+print(scatter_colors)

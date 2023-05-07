@@ -14,6 +14,14 @@ else:
 for path in os.listdir('captures'):
     if path[-4:] == '.tsv':
         os.remove('captures/'+path)
+if os.path.exists('output'):
+    if len(os.listdir('output')) > 0:
+        #remove all files in captures folder
+        files = ['output/'+f for f in os.listdir('output')]
+        for f in files:
+            os.remove(f)
+else:
+    os.mkdir('output')
 for temp_path in os.listdir('captures'):
     path = 'captures/'+temp_path
     packet_limit = np.Inf #the number of packets to process
@@ -64,4 +72,4 @@ for temp_path in os.listdir('captures'):
     plt.xlabel("Time elapsed [min]")
     figbar=plt.colorbar()       
     figbar.ax.set_ylabel('Log Probability\n ', rotation=270)
-    plt.show()
+    plt.savefig('output/'+str(i)+'.png')
