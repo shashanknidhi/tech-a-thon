@@ -53,3 +53,12 @@ images = [Image.open(os.path.join(folder_path, image_file)) for image_file in im
 
 # Display the images
 display_images(images)
+
+import streamlit as st
+import pandas as pd
+tab1, tab2 = st.tabs(['tab1',"tab2"])
+with tab1:
+    display_images(images)
+with tab2:
+    df = pd.read_csv('blocked.csv')
+    st.dataframe(df['ip.src']) 
