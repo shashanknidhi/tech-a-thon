@@ -57,7 +57,7 @@ for temp_path in os.listdir('captures'):
     from matplotlib import pyplot as plt
     from matplotlib import cm
     plt.figure(figsize=(10,5))
-    fig = plt.scatter(range(FMgrace+ADgrace+1,len(RMSEs)),RMSEs[FMgrace+ADgrace+1:],s=0.1,c=logProbs[FMgrace+ADgrace+1:],cmap='RdYlGn')
+    fig = plt.scatter(range(FMgrace+ADgrace+1,len(RMSEs)),RMSEs[FMgrace+ADgrace+1:],s=0.4,c=logProbs[FMgrace+ADgrace+1:],cmap='RdYlGn')
     plt.yscale("log")
     plt.title("Anomaly Scores from Kitsune's Execution Phase")
     plt.ylabel("RMSE (log scaled)")
