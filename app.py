@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy.stats import norm
+from scipy.stats import norm
 import os
 def create_plot(txtpath):
     FMgrace = 1000 
