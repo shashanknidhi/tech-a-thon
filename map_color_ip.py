@@ -50,6 +50,7 @@ def filter_packets(tsv_path,indexs):
     # print('df',len(df))
     # print('indexs',len(indexs))
     df = df[indexs]
+    tsv_path = tsv_path.split('/')[1].split('.')[0]
     df.to_csv('output_csv/'+tsv_path+'.csv')
     return df
 for path in os.listdir('anomaly_scores'):

@@ -6,7 +6,10 @@ Displays Threats
 """)
 
 
-
+csv_folder = 'output_csv/'
+def block_ip(i):
+    df = pd.read_csv(csv_folder+str(i)+'.csv')
+    df.to_csv('blocked.csv',mode='a',header=False)
 def display_images(images):
     # st.write(
     #     """
@@ -35,12 +38,16 @@ def display_images(images):
 
     # st.write('<div class="row-container">')
 
-    for image in images:
-        # st.write('<div class="column-container">')
-        st.image(image, use_column_width="auto")
-        # st.write('</div>')
+    # for image in images:
+    #     st.image(image, use_column_width="auto")
+    for i in range(6):
+        st.image(images[i], use_column_width="auto")
+        df = pd.read_csv(csv_folder+str(i)+'.csv')
+        st.dataframe(df['ip.src'])
+        button = st.button('Block Above IPs')
+        if button:
+            block_ip(i)
 
-    # st.write('</div>')
 
 # Specify the folder path containing the images
 folder_path = "output"
