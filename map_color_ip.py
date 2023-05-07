@@ -5,6 +5,14 @@ from scipy.stats import norm
 import os
 FMgrace = 1000 
 ADgrace = 1000
+if os.path.exists('output_csv'):
+    if len(os.listdir('output_csv')) > 0:
+        #remove all files in captures folder
+        files = ['output_csv/'+f for f in os.listdir('output_csv')]
+        for f in files:
+            os.remove(f)
+else:
+    os.mkdir('output_csv')
 def create_plot(txtpath):
     FMgrace = 1000 
     ADgrace = 1000
@@ -42,7 +50,7 @@ def filter_packets(tsv_path,indexs):
     # print('df',len(df))
     # print('indexs',len(indexs))
     df = df[indexs]
-    df.to_csv(tsv_path+'.csv')
+    df.to_csv('output_csv/'+tsv_path+'.csv')
     return df
 for path in os.listdir('anomaly_scores'):
     temppath = 'anomaly_scores/'+path
